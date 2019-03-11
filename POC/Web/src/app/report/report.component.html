@@ -1,0 +1,97 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+  <a class="navbar-brand mr-1" href="index.html">Report Builder</a>
+  <!-- <button type="button" value="Add Row" (click)="AddRow(1)">Row 1x1</button>
+  <button type="button" value="Add Row" (click)="AddRow(2)">Row 1x2</button>
+  <button type="button" value="Add Row" (click)="AddRow(3)">Row 1x3</button>
+  <button type="button" value="Add Row" (click)="AddRow(4)">Row 1x4</button> -->
+
+  <div class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+    <div class="input-group">
+      <select (change)="templateChange($event.target.value)" class="form-control">
+        <option value="default">Select Option</option>
+        <option *ngFor="let template of templates" value={{template.value}}>
+          {{template.text}}
+        </option>
+      </select>
+      <button type="button" value="Add Row" (click)="AddTemplate(row,column)">Add Template</button>
+      &nbsp;&nbsp;
+  <button type="button" (click) = "PrintPDF()" value="Add Row">&nbsp;&nbsp;Print&nbsp;&nbsp;</button>
+
+    </div>
+  </div>
+</nav>
+<div id="wrapper">
+  <!-- Sidebar -->
+  <ul class="sidebar navbar-nav">
+    <li class="btn btn-primary margin-top-2 textAlignLeft" dropData="LogoComponent" mwlDraggable (dragEnd)="dragEnd($event)">
+      Logo
+    </li>
+    <li class="btn btn-primary margin-top-2 textAlignLeft" dropData="HeaderComponent" mwlDraggable (dragEnd)="dragEnd($event)">
+      Header
+    </li>
+    <li class="btn btn-primary margin-top-2 textAlignLeft" dropData="ObjectiveComponent" mwlDraggable (dragEnd)="dragEnd($event)">
+      Fund Objective
+    </li>
+    <li class="btn btn-primary margin-top-2 textAlignLeft" dropData="RiskReturnsComponent" mwlDraggable (dragEnd)="dragEnd($event)">
+      Returns
+    </li>
+    <li class="btn btn-primary margin-top-2 textAlignLeft" dropData="RiskAllocationComponent" mwlDraggable (dragEnd)="dragEnd($event)">
+      Risk Allocation
+    </li>
+    <li class="btn btn-primary margin-top-2 textAlignLeft" dropData="DisclaimerComponent" mwlDraggable (dragEnd)="dragEnd($event)">
+        Disclaimer 
+      </li>
+    <li class="btn btn-primary margin-top-2 textAlignLeft" dropData="Component1" mwlDraggable (dragEnd)="dragEnd($event)">
+      Sample 0
+    </li>
+    <li class="btn btn-primary margin-top-2 textAlignLeft" dropData="Component2" mwlDraggable (dragEnd)="dragEnd($event)">
+      Sample 1
+    </li>
+    <li class="btn btn-primary margin-top-2 textAlignLeft" dropData="TextEditorComponent" mwlDraggable (dragEnd)="dragEnd($event)">
+      Input Editor
+    </li>
+  </ul>
+
+  <div id="content-wrapper" [ngStyle]="contentStyle">
+
+    <!-- <div [innerHTML]="templateHtml | sanitizeHtml" ></div> -->
+    <div *ngFor="let r of reportTemplate">
+      <table class='table table-bordered templateTable' [ngClass]="r.rowStyle">
+        <tr>
+          <td *ngFor="let c of r.cols" mwlDroppable (drop)='onDrop($event, r , c)' [ngStyle]="tdStyle" [id]="GetClassName(r,c)"
+            [attr.colspan]="c.colSpan" [attr.width]="c.width" [attr.height]="c.height">
+            <dynamic-component [componentData]="GetComponent(r , c)" class="FloatLeft width98percent"></dynamic-component>
+            <div [attr.colspan]="r.cols.length" class="toolbar">
+                <div class="toolbar-icon toolbar-delete" (click) = "DeleteTemplate(r , c)"></div>
+                <br/>
+                <div class="toolbar-icon toolbar-page-break" (click) = "PageBreakStyle(r , c)"></div>
+                <br/>
+                <div class="toolbar-icon toolbar-header" (click) = "HeaderStyle(r , c)"></div>
+                <br/>
+                <div class="toolbar-icon toolbar-footer" (click) = "FooterStyle(r , c)"></div>
+                <div class="clearBoth"></div>
+              </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <!-- <table class='table table-bordered '>
+        <tr *ngFor="let r of rowArray">
+          <td *ngFor="let c of columnArray" mwlDroppable (drop)='onDrop($event, r , c)' [ngStyle]="tdStyle" [id] = "GetClassName(r,c)" >
+           <dynamic-component [componentData]="GetComponent(r , c)"></dynamic-component> 
+          </td>
+        </tr>
+      </table> -->
+    <div style="clear:both"></div>
+    <!-- /.container-fluid -->
+
+    <!-- Sticky Footer -->
+    <!-- <footer class="sticky-footer" mwlDroppable (drop)="onDrop($event)">
+      <span>Testing</span>
+    </footer> -->
+
+  </div>
+  <!-- /.content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
