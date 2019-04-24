@@ -1,0 +1,20 @@
+.riskTable td{
+    height:20px;
+}
+
+.riskTable td
+{
+    border :none;
+}
+.riskTable tr
+{
+    border :solid 1px #ccc;
+}
+.tdBorderLeft
+{
+  border-left:solid 2px #a5a0a0!important;
+}
+.trBorderTop
+{
+    border-top:solid 2px #a5a0a0!important;
+}

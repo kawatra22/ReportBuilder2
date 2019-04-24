@@ -1,0 +1,181 @@
+
+body{
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+}
+.label
+{
+  color: #fff;
+  margin:2px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.templateTable td, .templateTable th,
+.templateTable
+{
+  border:1px dashed #afacac;
+  margin:auto;
+  min-height: 75px;
+  text-align: left;
+  padding:0px;
+}
+.margin-top-2
+{
+  margin-top:2px;
+  z-index:99999;
+}
+.conten-header
+{
+  background-color: #959192;
+  text-align: left;
+  font-weight: bold;
+  font-size: 12px;
+  padding: 3px;
+  margin: 0px;
+}
+.content
+{
+  padding-left: 6px;
+  font-size: 10px;
+  margin: 0px;  
+  margin-top:2px;
+}
+.FloatLeft
+{
+  float:left;
+}
+.FloatRight
+{
+  float: right;
+}
+.clearBoth
+{
+  clear: both;
+}
+.textAlignLeft
+{
+  text-align: left;
+}
+
+.table-heading
+{
+  font-weight: bold;
+}
+#content-wrapper
+{
+  overflow: auto;
+}
+
+.templateTable {
+  border-collapse: collapse;
+}
+
+.templateTable td.resizing{
+  cursor: col-resize;
+}
+.btn{
+padding: .175rem .15rem;
+}
+.toolbar
+{
+  height: 20px;
+  text-align: right;
+  padding: 0px;
+  padding-right:5px;
+  border: none;
+  float: right;
+  position: static;
+  right: 0px;
+}
+
+.toolbar-icon
+{
+  background: transparent;
+  width:18px;
+  height:18px;
+  text-align: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  float: right;
+  cursor: pointer;
+  border:none;
+  opacity: 0.2;
+  }
+.toolbar-delete
+{
+  background-image: url("./assets/images/delete.png");
+}
+.toolbar-split
+{
+  background-image: url("./assets/images/split.png");
+  opacity: 0.6;
+}
+.toolbar-page-break
+{
+  background-image: url("./assets/images/page-break.png");
+}
+.toolbar-header
+{
+  background-image: url("./assets/images/header.png");
+}
+.toolbar-footer
+{
+  background-image: url("./assets/images/footer.png");
+}
+.toolbar-icon:hover
+{
+  border: solid 1px #ccc;
+  background-color: #f7f7f7;
+  border-radius:3px;
+  opacity: 1;
+}
+.width98percent
+{
+  width:calc(100% - 25px);
+}
+.hide
+{
+  display: none;
+}
+.button
+{
+  background-color:#007bff;
+  color:white;
+  padding:5px;
+  line-height: 20px;
+  margin-left:5px;
+  border:solid 1px #333333;
+  border-radius: 5px;
+  min-width: 100px;
+}
+.width100percent
+{
+  width:100%!important;
+}
+.dialog-button
+{
+  text-align: right;
+  margin-top:10px;
+}
+.pageBreak{
+  page-break-before: always;
+}
+.highlightIcon{
+  border: solid 1px rgb(23, 0, 124);
+  background-color: #fff;
+  opacity: 1;
+}
+.pageHeader
+{
+  border:solid 2px #070C7A;
+}
+.pageBody
+{
+  background-color: white;
+}
+.pageFooter
+{
+  border:solid 2px #9B034E;
+}

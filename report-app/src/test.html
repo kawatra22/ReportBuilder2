@@ -1,0 +1,598 @@
+<head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <style type="text/css">
+        body{
+          color: black;
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 11px;
+        }
+        .label
+        {
+          color: #fff;
+          margin:2px;
+          margin-left: 4px;
+          margin-right: 4px;
+        }
+        .templateTable td, .templateTable th,
+        .templateTable
+        {
+          border:1px dashed #afacac;
+          margin:auto;
+          min-height: 75px;
+          text-align: left;
+          padding:0px;
+        }
+        .margin-top-2
+        {
+          margin-top:2px;
+          z-index:99999;
+        }
+        .conten-header
+        {
+          background-color: #959192;
+          text-align: left;
+          font-weight: bold;
+          font-size: 12px;
+          padding: 3px;
+          margin: 0px;
+        }
+        .content
+        {
+          padding-left: 6px;
+          font-size: 10px;
+          margin: 0px;  
+          margin-top:2px;
+        }
+        .FloatLeft
+        {
+          float:left;
+        }
+        .FloatRight
+        {
+          float: right;
+        }
+        .clearBoth
+        {
+          clear: both;
+        }
+        .textAlignLeft
+        {
+          text-align: left;
+        }
+        .table-heading
+        {
+          font-weight: bold;
+        }
+        #content-wrapper
+        {
+          overflow: auto;
+        }
+        .templateTable {
+          border-collapse: collapse;
+        }
+        .templateTable td.resizing{
+          cursor: col-resize;
+        }
+        .btn{
+        padding: .175rem .15rem;
+        }
+        .toolbar
+        {
+          height: 20px;
+          text-align: right;
+          padding: 0px;
+          padding-right:5px;
+          border: none;
+          float: right;
+          position: static;
+          right: 0px;
+        }
+        .toolbar-icon
+        {
+          background: transparent;
+          width:18px;
+          height:18px;
+          text-align: center;
+          background-position: center;
+          background-repeat: no-repeat;
+          float: right;
+          cursor: pointer;
+          border:none;
+          opacity: 0.2;
+          }
+        .toolbar-delete
+        {
+          background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEwAACxMBAJqcGAAAAIZJREFUOI3dkUEOwjAMBIe+BEU8qGoj9QZVoK8qHNJ/puFSJBNchyvsyVp7R1kF/k4nIAJe2Q3AAjgLEIEMrEAQ/m3zMvCwAF4cviBX4SWgrdUIBUSGz7WwBjHDzQ7g8KWnauL92UnMYy088Nn5UkB6C7Cgdx4F5G4BHDCjf1W37Y6VFr+mJ1CRMSNp9vRhAAAAAElFTkSuQmCC");
+        }
+        .toolbar-split
+        {
+          background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAATBJREFUeNqkUz1OhUAQnv1rNNjRWthyAGNPR80ZvACNJ7Cz9x2BjoKCI3gA21d4AAoIFiwszqxvEXX3JeRNMtkN33xfvh1m2LIscEmwPM/v8LzHjHbwesy3siyPcp7nh6IonuI4TvAO06Rtaj3hOYExVM8xJXCuQAgFbdu+Hw4vz/jxKI0xN8MwJH3fAz2HRCjx+0ng59xgSVVV1yQtlVImTVOvz7quIcsyL9Y0DbMCqM5I/W8zGWOrEx9GPCfAXeE2OOfW+hmM/xKg3IYQYhUIYN8CWmtOhZTbcA0NYcSzAuM4ClfoeSeEMOI5AfsEVAz2wIcR76wDKaUlhrDVAQ6RIks4D/9s0nCFMOLZexRFj9jV271LhM4+uq57pWG4Oi2S2MOnhcK/8ckuXecvAQYAVnIKKAV+R0YAAAAASUVORK5CYII=");
+          opacity: 0.6;
+        }
+        .toolbar-icon:hover
+        {
+          border: solid 1px #ccc;
+          background-color: #f7f7f7;
+          border-radius:3px;
+          opacity: 1;
+        }
+        .width98percent
+        {
+          width:calc(100% - 25px);
+        }
+        .hide
+        {
+          display: none;
+        }
+        .button
+        {
+          background-color:#007bff;
+          color:white;
+          padding:5px;
+          line-height: 20px;
+          margin-left:5px;
+          border:solid 1px #333333;
+          border-radius: 5px;
+          min-width: 100px;
+        }
+        .width100percent
+        {
+          width:100%!important;
+        }
+        .dialog-button
+        {
+          text-align: right;
+          margin-top:10px;
+        }</style>
+
+<style>html[_ngcontent-c1] {
+        position: relative;
+        min-height: 100%;
+      }
+    
+     body[_ngcontent-c1] {
+        height: 100%;
+      }
+    
+     #wrapper[_ngcontent-c1] {
+        display: flex;
+      }
+    
+     #wrapper[_ngcontent-c1]   #content-wrapper[_ngcontent-c1] {
+        overflow-x: hidden;
+        width: 100%;
+        padding-top: 1rem;
+        padding-bottom: 80px;
+      }
+    
+     body.fixed-nav[_ngcontent-c1]   #content-wrapper[_ngcontent-c1] {
+        margin-top: 56px;
+        padding-left: 90px;
+      }
+    
+     body.fixed-nav.sidebar-toggled[_ngcontent-c1]   #content-wrapper[_ngcontent-c1] {
+        padding-left: 0;
+      }
+    
+     @media (min-width: 768px) {
+        body.fixed-nav[_ngcontent-c1]   #content-wrapper[_ngcontent-c1] {
+          padding-left: 225px;
+        }
+        body.fixed-nav.sidebar-toggled[_ngcontent-c1]   #content-wrapper[_ngcontent-c1] {
+          padding-left: 90px;
+        }
+      }
+    
+     .scroll-to-top[_ngcontent-c1] {
+        position: fixed;
+        right: 15px;
+        bottom: 15px;
+        display: none;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        color: #fff;
+        background: rgba(52, 58, 64, 0.5);
+        line-height: 46px;
+      }
+    
+     .scroll-to-top[_ngcontent-c1]:focus, .scroll-to-top[_ngcontent-c1]:hover {
+        color: white;
+      }
+    
+     .scroll-to-top[_ngcontent-c1]:hover {
+        background: #343a40;
+      }
+    
+     .scroll-to-top[_ngcontent-c1]   i[_ngcontent-c1] {
+        font-weight: 800;
+      }
+    
+     .smaller[_ngcontent-c1] {
+        font-size: 0.7rem;
+      }
+    
+     .o-hidden[_ngcontent-c1] {
+        overflow: hidden !important;
+      }
+    
+     .z-0[_ngcontent-c1] {
+        z-index: 0;
+      }
+    
+     .z-1[_ngcontent-c1] {
+        z-index: 1;
+      }
+    
+     .navbar-nav[_ngcontent-c1]   .form-inline[_ngcontent-c1]   .input-group[_ngcontent-c1] {
+        width: 100%;
+      }
+    
+     .navbar-nav[_ngcontent-c1]   .nav-item.active[_ngcontent-c1]   .nav-link[_ngcontent-c1] {
+        color: #fff;
+      }
+    
+     .navbar-nav[_ngcontent-c1]   .nav-item.dropdown[_ngcontent-c1]   .dropdown-toggle[_ngcontent-c1]::after {
+        width: 1rem;
+        text-align: center;
+        float: right;
+        vertical-align: 0;
+        border: 0;
+        font-weight: 900;
+        content: '\f105';
+        font-family: 'Font Awesome 5 Free';
+      }
+    
+     .navbar-nav[_ngcontent-c1]   .nav-item.dropdown.show[_ngcontent-c1]   .dropdown-toggle[_ngcontent-c1]::after {
+        content: '\f107';
+      }
+    
+     .navbar-nav[_ngcontent-c1]   .nav-item.dropdown.no-arrow[_ngcontent-c1]   .dropdown-toggle[_ngcontent-c1]::after {
+        display: none;
+      }
+    
+     .navbar-nav[_ngcontent-c1]   .nav-item[_ngcontent-c1]   .nav-link[_ngcontent-c1]:focus {
+        outline: none;
+      }
+    
+     .navbar-nav[_ngcontent-c1]   .nav-item[_ngcontent-c1]   .nav-link[_ngcontent-c1]   .badge[_ngcontent-c1] {
+        position: absolute;
+        margin-left: 0.75rem;
+        top: 0.3rem;
+        font-weight: 400;
+        font-size: 0.5rem;
+      }
+    
+     @media (min-width: 768px) {
+        .navbar-nav[_ngcontent-c1]   .form-inline[_ngcontent-c1]   .input-group[_ngcontent-c1] {
+          width: auto;
+        }
+      }
+    
+     .sidebar[_ngcontent-c1] {
+        width: 90px !important;
+        background-color: #212529;
+        min-height: calc(100vh - 56px);
+      }
+    
+     .sidebar[_ngcontent-c1]   .nav-item[_ngcontent-c1]:last-child {
+        margin-bottom: 1rem;
+      }
+    
+     .sidebar[_ngcontent-c1]   .nav-item[_ngcontent-c1]   .nav-link[_ngcontent-c1] {
+        text-align: center;
+        padding: 0.75rem 1rem;
+        width: 90px;
+      }
+    
+     .sidebar[_ngcontent-c1]   .nav-item[_ngcontent-c1]   .nav-link[_ngcontent-c1]   span[_ngcontent-c1] {
+        font-size: 0.65rem;
+        display: block;
+      }
+    
+     .sidebar[_ngcontent-c1]   .nav-item[_ngcontent-c1]   .dropdown-menu[_ngcontent-c1] {
+        position: absolute !important;
+        -webkit-transform: none !important;
+        transform: none !important;
+        left: calc(90px + 0.5rem) !important;
+        margin: 0;
+      }
+    
+     .sidebar[_ngcontent-c1]   .nav-item[_ngcontent-c1]   .dropdown-menu.dropup[_ngcontent-c1] {
+        bottom: 0;
+        top: auto !important;
+      }
+    
+     .sidebar[_ngcontent-c1]   .nav-item.dropdown[_ngcontent-c1]   .dropdown-toggle[_ngcontent-c1]::after {
+        display: none;
+      }
+    
+     .sidebar[_ngcontent-c1]   .nav-item[_ngcontent-c1]   .nav-link[_ngcontent-c1] {
+        color: rgba(255, 255, 255, 0.5);
+      }
+    
+     .sidebar[_ngcontent-c1]   .nav-item[_ngcontent-c1]   .nav-link[_ngcontent-c1]:active, .sidebar[_ngcontent-c1]   .nav-item[_ngcontent-c1]   .nav-link[_ngcontent-c1]:focus, .sidebar[_ngcontent-c1]   .nav-item[_ngcontent-c1]   .nav-link[_ngcontent-c1]:hover {
+        color: rgba(255, 255, 255, 0.75);
+      }
+    
+     .sidebar.toggled[_ngcontent-c1] {
+        width: 0 !important;
+        overflow: hidden;
+      }
+    
+     @media (min-width: 768px) {
+        .sidebar[_ngcontent-c1] {
+          width: 225px !important;
+        }
+        .sidebar[_ngcontent-c1]   .nav-item[_ngcontent-c1]   .nav-link[_ngcontent-c1] {
+          display: block;
+          width: 100%;
+          text-align: left;
+          padding: 1rem;
+          width: 225px;
+        }
+        .sidebar[_ngcontent-c1]   .nav-item[_ngcontent-c1]   .nav-link[_ngcontent-c1]   span[_ngcontent-c1] {
+          font-size: 1rem;
+          display: inline;
+        }
+        .sidebar[_ngcontent-c1]   .nav-item[_ngcontent-c1]   .dropdown-menu[_ngcontent-c1] {
+          position: static !important;
+          margin: 0 1rem;
+          top: 0;
+        }
+        .sidebar[_ngcontent-c1]   .nav-item.dropdown[_ngcontent-c1]   .dropdown-toggle[_ngcontent-c1]::after {
+          display: block;
+        }
+        .sidebar.toggled[_ngcontent-c1] {
+          overflow: visible;
+          width: 90px !important;
+        }
+        .sidebar.toggled[_ngcontent-c1]   .nav-item[_ngcontent-c1]:last-child {
+          margin-bottom: 1rem;
+        }
+        .sidebar.toggled[_ngcontent-c1]   .nav-item[_ngcontent-c1]   .nav-link[_ngcontent-c1] {
+          text-align: center;
+          padding: 0.75rem 1rem;
+          width: 90px;
+        }
+        .sidebar.toggled[_ngcontent-c1]   .nav-item[_ngcontent-c1]   .nav-link[_ngcontent-c1]   span[_ngcontent-c1] {
+          font-size: 0.65rem;
+          display: block;
+        }
+        .sidebar.toggled[_ngcontent-c1]   .nav-item[_ngcontent-c1]   .dropdown-menu[_ngcontent-c1] {
+          position: absolute !important;
+          -webkit-transform: none !important;
+          transform: none !important;
+          left: calc(90px + 0.5rem) !important;
+          margin: 0;
+        }
+        .sidebar.toggled[_ngcontent-c1]   .nav-item[_ngcontent-c1]   .dropdown-menu.dropup[_ngcontent-c1] {
+          bottom: 0;
+          top: auto !important;
+        }
+        .sidebar.toggled[_ngcontent-c1]   .nav-item.dropdown[_ngcontent-c1]   .dropdown-toggle[_ngcontent-c1]::after {
+          display: none;
+        }
+      }
+    
+     .sidebar.fixed-top[_ngcontent-c1] {
+        top: 56px;
+        height: calc(100vh - 56px);
+        overflow-y: auto;
+      }
+    
+     .card-body-icon[_ngcontent-c1] {
+        position: absolute;
+        z-index: 0;
+        top: -1.25rem;
+        right: -1rem;
+        opacity: 0.4;
+        font-size: 5rem;
+        -webkit-transform: rotate(15deg);
+        transform: rotate(15deg);
+      }
+    
+     @media (min-width: 576px) {
+        .card-columns[_ngcontent-c1] {
+          -webkit-column-count: 1;
+          column-count: 1;
+        }
+      }
+    
+     @media (min-width: 768px) {
+        .card-columns[_ngcontent-c1] {
+          -webkit-column-count: 2;
+          column-count: 2;
+        }
+      }
+    
+     @media (min-width: 1200px) {
+        .card-columns[_ngcontent-c1] {
+          -webkit-column-count: 2;
+          column-count: 2;
+        }
+      }
+    
+     [_ngcontent-c1]:root {
+        --input-padding-x: 0.75rem;
+        --input-padding-y: 0.75rem;
+      }
+    
+     .card-login[_ngcontent-c1] {
+        max-width: 25rem;
+      }
+    
+     .card-register[_ngcontent-c1] {
+        max-width: 40rem;
+      }
+    
+     .form-label-group[_ngcontent-c1] {
+        position: relative;
+      }
+    
+     .form-label-group[_ngcontent-c1]    > input[_ngcontent-c1], .form-label-group[_ngcontent-c1]    > label[_ngcontent-c1] {
+        padding: var(--input-padding-y) var(--input-padding-x);
+        height: auto;
+      }
+    
+     .form-label-group[_ngcontent-c1]    > label[_ngcontent-c1] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        margin-bottom: 0;
+        
+        line-height: 1.5;
+        color: #495057;
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
+        transition: all 0.1s ease-in-out;
+      }
+    
+     .form-label-group[_ngcontent-c1]   input[_ngcontent-c1]::-webkit-input-placeholder {
+        color: transparent;
+      }
+    
+     .form-label-group[_ngcontent-c1]   input[_ngcontent-c1]:-ms-input-placeholder {
+        color: transparent;
+      }
+    
+     .form-label-group[_ngcontent-c1]   input[_ngcontent-c1]::-ms-input-placeholder {
+        color: transparent;
+      }
+    
+     .form-label-group[_ngcontent-c1]   input[_ngcontent-c1]::placeholder {
+        color: transparent;
+      }
+    
+     .form-label-group[_ngcontent-c1]   input[_ngcontent-c1]:not(:placeholder-shown) {
+        padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+        padding-bottom: calc(var(--input-padding-y) / 3);
+      }
+    
+     .form-label-group[_ngcontent-c1]   input[_ngcontent-c1]:not(:placeholder-shown)    ~ label[_ngcontent-c1] {
+        padding-top: calc(var(--input-padding-y) / 3);
+        padding-bottom: calc(var(--input-padding-y) / 3);
+        font-size: 12px;
+        color: #777;
+      }
+    
+     footer.sticky-footer[_ngcontent-c1] {
+        display: flex;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: calc(100% - 90px);
+        height: 80px;
+        background-color: #e9ecef;
+      }
+    
+     footer.sticky-footer[_ngcontent-c1]   .copyright[_ngcontent-c1] {
+        line-height: 1;
+        font-size: 0.8rem;
+      }
+    
+     @media (min-width: 768px) {
+        footer.sticky-footer[_ngcontent-c1] {
+          width: calc(100% - 225px);
+        }
+      }
+    
+     body.sidebar-toggled[_ngcontent-c1]   footer.sticky-footer[_ngcontent-c1] {
+        width: 100%;
+      }
+    
+     @media (min-width: 768px) {
+        body.sidebar-toggled[_ngcontent-c1]   footer.sticky-footer[_ngcontent-c1] {
+          width: calc(100% - 90px);
+        }
+      }
+    
+     h1[_ngcontent-c1]{
+        color: red;
+      }</style>
+        
+</head>
+<div _ngcontent-c1="" id="content-wrapper" ng-reflect-ng-style="[object Object]" style="height: 899px;"><!--bindings={
+    "ng-reflect-ng-for-of": ""
+  }--><div _ngcontent-c1=""><!----><!--bindings={
+    "ng-reflect-ng-template-outlet-context": "[object Object]",
+    "ng-reflect-ng-template-outlet": "[object Object]"
+  }--><table _ngcontent-c1="" class="table table-bordered templateTable"><tbody _ngcontent-c1=""><tr _ngcontent-c1=""><!--bindings={
+    "ng-reflect-ng-for-of": "[object Object]"
+  }--><td _ngcontent-c1="" colspan="1" width="1700" height="75"><div _ngcontent-c1="" mwldroppable="" ng-reflect-ng-style="[object Object]" height="75" class="" style="min-height: 75px;"><dynamic-component _ngcontent-c1="" class="FloatLeft width98percent" ng-reflect-component-data="[object Object]"><div id="Component_0_11"></div><app-logo _nghost-c2=""><img _ngcontent-c2="" class="logo" src="assets/images/aqr.png"></app-logo></dynamic-component><!--bindings={
+    "ng-reflect-ng-if": "true"
+  }--><div _ngcontent-c1="" class="toolbar" colspan="1"><div _ngcontent-c1="" class="toolbar-icon toolbar-delete"></div><br _ngcontent-c1=""><div _ngcontent-c1="" class="toolbar-icon toolbar-split"></div><div _ngcontent-c1="" class="clearBoth"></div></div></div><!--bindings={
+    "ng-reflect-ng-if": "0"
+  }--></td></tr></tbody></table></div><div _ngcontent-c1=""><!----><!--bindings={
+    "ng-reflect-ng-template-outlet-context": "[object Object]",
+    "ng-reflect-ng-template-outlet": "[object Object]"
+  }--><table _ngcontent-c1="" class="table table-bordered templateTable"><tbody _ngcontent-c1=""><tr _ngcontent-c1=""><!--bindings={
+    "ng-reflect-ng-for-of": "[object Object]"
+  }--><td _ngcontent-c1="" colspan="1" width="1700" height="75" class=""><div _ngcontent-c1="" mwldroppable="" ng-reflect-ng-style="[object Object]" height="75" class="" style="min-height: 75px;"><dynamic-component _ngcontent-c1="" class="FloatLeft width98percent" ng-reflect-component-data="[object Object]"><div id="Component_0_21"></div><app-header-component _nghost-c3=""><input _ngcontent-c3="" class="headerInput" placeholder="Type Heading Here" type="text"></app-header-component></dynamic-component><!--bindings={
+    "ng-reflect-ng-if": "true"
+  }--><div _ngcontent-c1="" class="toolbar" colspan="1"><div _ngcontent-c1="" class="toolbar-icon toolbar-delete"></div><br _ngcontent-c1=""><div _ngcontent-c1="" class="toolbar-icon toolbar-split"></div><div _ngcontent-c1="" class="clearBoth"></div></div></div><!--bindings={
+    "ng-reflect-ng-if": "0"
+  }--></td></tr></tbody></table></div><div _ngcontent-c1=""><!----><!--bindings={
+    "ng-reflect-ng-template-outlet-context": "[object Object]",
+    "ng-reflect-ng-template-outlet": "[object Object]"
+  }--><table _ngcontent-c1="" class="table table-bordered templateTable"><tbody _ngcontent-c1=""><tr _ngcontent-c1=""><!--bindings={
+    "ng-reflect-ng-for-of": "[object Object]"
+  }--><td _ngcontent-c1="" colspan="1" width="1700" height="75"><div _ngcontent-c1="" mwldroppable="" ng-reflect-ng-style="[object Object]" height="75" class="" style="min-height: 75px;"><dynamic-component _ngcontent-c1="" class="FloatLeft width98percent" ng-reflect-component-data="[object Object]"><div id="Component_0_31"></div><app-objective _nghost-c4=""><div _ngcontent-c4="" class="conten-header"> Fund Objective and Investment Process
+  </div><div _ngcontent-c4="" class="content"> AQR Style Premia Fund seeks to produce high risk adjustment returns while maintaining low-to-zero correlation to traditional markets. AQR pursues these goals by investing in a combination of different Investment strategies that apply qunatitative return forecasting models and systematic risk control methods. <br _ngcontent-c4=""> Our multi-strategy investment process includes <br _ngcontent-c4=""><ul _ngcontent-c4="" class="FloatLeft"><li _ngcontent-c4="">Stockes &amp; Industeries</li><li _ngcontent-c4="">Equity Markets</li><li _ngcontent-c4="">Commodities</li></ul><ul _ngcontent-c4="" class="FloatLeft"><li _ngcontent-c4="">Fixed Income</li><li _ngcontent-c4="">Currencies</li></ul><div _ngcontent-c4="" class="clearBoth"></div><hr _ngcontent-c4="" class="objectiveHr FloatLeft"><div _ngcontent-c4="" class="clearBoth"></div><span _ngcontent-c4=""><b _ngcontent-c4="">Assets Under Management</b> (approx. as of 01/02/2019) <br _ngcontent-c4=""> Estimated Master Fund Net Assets. $12.2 billion <br _ngcontent-c4=""></span><hr _ngcontent-c4="" class="objectiveHr FloatLeft"><div _ngcontent-c4="" class="clearBoth"></div></div></app-objective></dynamic-component><!--bindings={
+    "ng-reflect-ng-if": "true"
+  }--><div _ngcontent-c1="" class="toolbar" colspan="1"><div _ngcontent-c1="" class="toolbar-icon toolbar-delete"></div><br _ngcontent-c1=""><div _ngcontent-c1="" class="toolbar-icon toolbar-split"></div><div _ngcontent-c1="" class="clearBoth"></div></div></div><!--bindings={
+    "ng-reflect-ng-if": "0"
+  }--></td></tr></tbody></table></div><div _ngcontent-c1=""><!----><!--bindings={
+    "ng-reflect-ng-template-outlet-context": "[object Object]",
+    "ng-reflect-ng-template-outlet": "[object Object]"
+  }--><table _ngcontent-c1="" class="table table-bordered templateTable"><tbody _ngcontent-c1=""><tr _ngcontent-c1=""><!--bindings={
+    "ng-reflect-ng-for-of": "[object Object],[object Object"
+  }--><td _ngcontent-c1="" colspan="1" width="850" height="75" class=""><div _ngcontent-c1="" mwldroppable="" ng-reflect-ng-style="[object Object]" height="75" class="" style="min-height: 75px;"><dynamic-component _ngcontent-c1="" class="FloatLeft width98percent" ng-reflect-component-data="[object Object]"><div id="Component_0_41"><div style="position: relative;"><div dir="ltr" style="position: relative; width: 500px; height: 300px; margin: auto;"><div aria-label="A chart." style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;"><svg width="500" height="300" aria-label="A chart." style="overflow: hidden;"><defs id="_ABSTRACT_RENDERER_ID_0"><filter id="_ABSTRACT_RENDERER_ID_1"><feGaussianBlur in="SourceAlpha" stdDeviation="2"></feGaussianBlur><feOffset dx="1" dy="1"></feOffset><feComponentTransfer><feFuncA type="linear" slope="0.1"></feFuncA></feComponentTransfer><feMerge><feMergeNode></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge></filter></defs><rect x="0" y="0" width="500" height="300" stroke="none" stroke-width="0" fill="#ffffff"></rect><g><path d="M250,150L250,9A141,141,0,0,1,378.25811134498707,91.42648316673402L250,150A0,0,0,0,0,250,150" stroke="#ffffff" stroke-width="1" fill="#3366cc"></path><text text-anchor="start" x="294.7881122353489" y="58.055820672981696" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">18.2%</text></g><g><path d="M250,150L378.25811134498707,91.42648316673402A141,141,0,0,1,311.1776072155757,277.03661037424115L250,150A0,0,0,0,0,250,150" stroke="#ffffff" stroke-width="1" fill="#dc3912"></path><text text-anchor="start" x="337.3659719618564" y="191.9184268902014" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">24.7%</text></g><g><path d="M250,150L121.74188865501293,91.426483166734A141,141,0,0,1,250,9L250,150A0,0,0,0,0,250,150" stroke="#ffffff" stroke-width="1" fill="#990099"></path><text text-anchor="start" x="171.21188776465115" y="58.05582067298168" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">18.2%</text></g><g><path d="M250,150L168.99487425095867,265.40870678758165A141,141,0,0,1,121.74188865501284,91.42648316673419L250,150A0,0,0,0,0,250,150" stroke="#ffffff" stroke-width="1" fill="#109618"></path><text text-anchor="start" x="125.86624592828298" y="183.29716655319172" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">22.1%</text></g><g><path d="M250,150L311.17760721557573,277.0366103742411A141,141,0,0,1,168.99487425095867,265.40870678758165L250,150A0,0,0,0,0,250,150" stroke="#ffffff" stroke-width="1" fill="#ff9900"></path><text text-anchor="start" x="223.17156185477046" y="274.37937591654025" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#ffffff">16.9%</text></g><g><g><g><text text-anchor="end" x="485" y="55.49171817058097" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#222222">Commodities</text></g><g><text text-anchor="end" x="485" y="74.90828182941904" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#9e9e9e">18.2%</text></g></g><g><path d="M307.5,61.5L403.5,61.5L403.5,61.5L485.5,61.5" stroke="#636363" stroke-width="1" stroke-opacity="0.7" fill-opacity="1" fill="none"></path><circle cx="307.5" cy="61.5" r="2" stroke="none" stroke-width="0" fill-opacity="0.7" fill="#636363"></circle></g><g><g><text text-anchor="end" x="485" y="180.49171817058095" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#222222">Currencies</text></g><g><text text-anchor="end" x="485" y="199.90828182941902" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#9e9e9e">24.7%</text></g></g><g><path d="M349.5,186.5L403.5,186.5L403.5,186.5L485.5,186.5" stroke="#636363" stroke-width="1" stroke-opacity="0.7" fill-opacity="1" fill="none"></path><circle cx="349.5" cy="186.5" r="2" stroke="none" stroke-width="0" fill-opacity="0.7" fill="#636363"></circle></g><g><g><text text-anchor="start" x="15" y="249.49171817058095" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#222222">Fixed Income</text></g><g><text text-anchor="start" x="15" y="268.908281829419" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#9e9e9e">16.9%</text></g></g><g><path d="M241.5,255.5L97.5,255.5L97.5,255.5L15.5,255.5" stroke="#636363" stroke-width="1" stroke-opacity="0.7" fill-opacity="1" fill="none"></path><circle cx="241.5" cy="255.5" r="2" stroke="none" stroke-width="0" fill-opacity="0.7" fill="#636363"></circle></g><g><g><text text-anchor="start" x="15" y="172.49171817058095" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#222222">Equity Markets</text></g><g><text text-anchor="start" x="15" y="191.90828182941902" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#9e9e9e">22.1%</text></g></g><g><path d="M148.5,178.5L97.5,178.5L97.5,178.5L15.5,178.5" stroke="#636363" stroke-width="1" stroke-opacity="0.7" fill-opacity="1" fill="none"></path><circle cx="148.5" cy="178.5" r="2" stroke="none" stroke-width="0" fill-opacity="0.7" fill="#636363"></circle></g><g><g><text text-anchor="start" x="15" y="39.78343634116193" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#222222">Stockes &amp;</text><text text-anchor="start" x="15" y="55.49171817058097" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#222222">Industries</text></g><g><text text-anchor="start" x="15" y="74.90828182941904" font-family="Arial" font-size="12" stroke="none" stroke-width="0" fill="#9e9e9e">18.2%</text></g></g><g><path d="M193.5,61.5L97.5,61.5L97.5,61.5L15.5,61.5" stroke="#636363" stroke-width="1" stroke-opacity="0.7" fill-opacity="1" fill="none"></path><circle cx="193.5" cy="61.5" r="2" stroke="none" stroke-width="0" fill-opacity="0.7" fill="#636363"></circle></g></g><g></g></svg><div aria-label="A tabular representation of the data in the chart." style="position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;"><table><thead><tr><th>Task</th><th>Hours per Day</th></tr></thead><tbody><tr><td>Commodities</td><td>14</td></tr><tr><td>Currencies</td><td>19</td></tr><tr><td>Fixed Income</td><td>13</td></tr><tr><td>Equity Markets</td><td>17</td></tr><tr><td>Stockes &amp; Industries</td><td>14</td></tr></tbody></table></div></div></div><div aria-hidden="true" style="display: none; position: absolute; top: 310px; left: 510px; white-space: nowrap; font-family: Arial; font-size: 12px; margin: auto; font-weight: bold;">17 (22.1%)</div><div style="margin: auto;"></div></div></div><app-risk-allocation _nghost-c5=""><div _ngcontent-c5="" class="divTableCell" id="Chartelement1"><pie-chart _ngcontent-c5="" _nghost-c6="" ng-reflect--chart-height="300" ng-reflect--chart-width="500" ng-reflect-data="Task,Hours per Day,Commodities" ng-reflect-config="[object Object]" ng-reflect-element-id="Component_0_41"><div _ngcontent-c6="" id="Component_0_41"></div></pie-chart><div _ngcontent-c5="" class="ClearBoth"></div></div></app-risk-allocation></dynamic-component><!--bindings={
+    "ng-reflect-ng-if": "true"
+  }--><div _ngcontent-c1="" class="toolbar" colspan="2"><div _ngcontent-c1="" class="toolbar-icon toolbar-delete"></div><br _ngcontent-c1=""><div _ngcontent-c1="" class="toolbar-icon toolbar-split"></div><div _ngcontent-c1="" class="clearBoth"></div></div></div><!--bindings={
+    "ng-reflect-ng-if": "0"
+  }--></td><td _ngcontent-c1="" colspan="1" width="850" height="75"><div _ngcontent-c1="" mwldroppable="" ng-reflect-ng-style="[object Object]" height="75" class="" style="min-height: 75px;"><dynamic-component _ngcontent-c1="" class="FloatLeft width98percent" ng-reflect-component-data="[object Object]"><div id="Component_0_42"></div><app-risk-returns _nghost-c7=""><div _ngcontent-c7="" class="conten-header"> Realized Style Contributions to Returns </div><div _ngcontent-c7="" class="table-heading">December Estimate</div><table _ngcontent-c7="" class="table riskTable"><thead _ngcontent-c7=""><tr _ngcontent-c7=""><td _ngcontent-c7="">&nbsp;</td><td _ngcontent-c7="">Stockes &amp; Induteries</td><td _ngcontent-c7="">Equity Indices</td><td _ngcontent-c7="">Fixed Income</td><td _ngcontent-c7="">Currencies</td><td _ngcontent-c7="">Comm.</td><td _ngcontent-c7="" class="tdBorderLeft">Total</td></tr></thead><tbody _ngcontent-c7=""><!--bindings={
+    "ng-reflect-ng-for-of": "[object Object],[object Object"
+  }--><tr _ngcontent-c7="" ng-reflect-ng-class=""><td _ngcontent-c7="">Value</td><td _ngcontent-c7="">-1.3%</td><td _ngcontent-c7="">-0.3%</td><td _ngcontent-c7="">2.7%</td><td _ngcontent-c7="">0.0%</td><td _ngcontent-c7="">1.6%</td><td _ngcontent-c7="" class="tdBorderLeft">2.6%</td></tr><tr _ngcontent-c7="" ng-reflect-ng-class=""><td _ngcontent-c7="">Momentum</td><td _ngcontent-c7="">-1.3%</td><td _ngcontent-c7="">-0.3%</td><td _ngcontent-c7="">2.7%</td><td _ngcontent-c7="">0.0%</td><td _ngcontent-c7="">1.6%</td><td _ngcontent-c7="" class="tdBorderLeft">2.6%</td></tr><tr _ngcontent-c7="" ng-reflect-ng-class=""><td _ngcontent-c7="">Carry</td><td _ngcontent-c7="">-1.3%</td><td _ngcontent-c7="">-0.3%</td><td _ngcontent-c7="">2.7%</td><td _ngcontent-c7="">0.0%</td><td _ngcontent-c7="">1.6%</td><td _ngcontent-c7="" class="tdBorderLeft">2.6%</td></tr><tr _ngcontent-c7="" ng-reflect-ng-class=""><td _ngcontent-c7="">Defensive</td><td _ngcontent-c7="">-1.3%</td><td _ngcontent-c7="">-0.3%</td><td _ngcontent-c7="">2.7%</td><td _ngcontent-c7="">0.0%</td><td _ngcontent-c7="">1.6%</td><td _ngcontent-c7="" class="tdBorderLeft">2.6%</td></tr><tr _ngcontent-c7="" class="trBorderTop" ng-reflect-ng-class="trBorderTop"><td _ngcontent-c7="">Total</td><td _ngcontent-c7="">-1.3%</td><td _ngcontent-c7="">-0.3%</td><td _ngcontent-c7="">2.7%</td><td _ngcontent-c7="">0.0%</td><td _ngcontent-c7="">1.6%</td><td _ngcontent-c7="" class="tdBorderLeft">2.6%</td></tr></tbody></table><div _ngcontent-c7="" class="table-heading">4Q18 Qtr-to-Date</div><table _ngcontent-c7="" class="table riskTable"><thead _ngcontent-c7=""><tr _ngcontent-c7=""><td _ngcontent-c7="">&nbsp;</td><td _ngcontent-c7="">Stockes &amp; Induteries</td><td _ngcontent-c7="">Equity Indices</td><td _ngcontent-c7="">Fixed Income</td><td _ngcontent-c7="">Currencies</td><td _ngcontent-c7="">Comm.</td><td _ngcontent-c7="" class="tdBorderLeft">Total</td></tr></thead><tbody _ngcontent-c7=""><!--bindings={
+    "ng-reflect-ng-for-of": "[object Object],[object Object"
+  }--><tr _ngcontent-c7="" ng-reflect-ng-class=""><td _ngcontent-c7="">Value</td><td _ngcontent-c7="">-1.3%</td><td _ngcontent-c7="">-0.3%</td><td _ngcontent-c7="">2.7%</td><td _ngcontent-c7="">0.0%</td><td _ngcontent-c7="">1.6%</td><td _ngcontent-c7="" class="tdBorderLeft">2.6%</td></tr><tr _ngcontent-c7="" ng-reflect-ng-class=""><td _ngcontent-c7="">Momentum</td><td _ngcontent-c7="">-1.3%</td><td _ngcontent-c7="">-0.3%</td><td _ngcontent-c7="">2.7%</td><td _ngcontent-c7="">0.0%</td><td _ngcontent-c7="">1.6%</td><td _ngcontent-c7="" class="tdBorderLeft">2.6%</td></tr><tr _ngcontent-c7="" ng-reflect-ng-class=""><td _ngcontent-c7="">Carry</td><td _ngcontent-c7="">-1.3%</td><td _ngcontent-c7="">-0.3%</td><td _ngcontent-c7="">2.7%</td><td _ngcontent-c7="">0.0%</td><td _ngcontent-c7="">1.6%</td><td _ngcontent-c7="" class="tdBorderLeft">2.6%</td></tr><tr _ngcontent-c7="" ng-reflect-ng-class=""><td _ngcontent-c7="">Defensive</td><td _ngcontent-c7="">-1.3%</td><td _ngcontent-c7="">-0.3%</td><td _ngcontent-c7="">2.7%</td><td _ngcontent-c7="">0.0%</td><td _ngcontent-c7="">1.6%</td><td _ngcontent-c7="" class="tdBorderLeft">2.6%</td></tr><tr _ngcontent-c7="" class="trBorderTop" ng-reflect-ng-class="trBorderTop"><td _ngcontent-c7="">Total</td><td _ngcontent-c7="">-1.3%</td><td _ngcontent-c7="">-0.3%</td><td _ngcontent-c7="">2.7%</td><td _ngcontent-c7="">0.0%</td><td _ngcontent-c7="">1.6%</td><td _ngcontent-c7="" class="tdBorderLeft">2.6%</td></tr></tbody></table><div _ngcontent-c7="" class="table-heading">2018 Year-to-Date</div><table _ngcontent-c7="" class="table riskTable"><thead _ngcontent-c7=""><tr _ngcontent-c7=""><td _ngcontent-c7="">&nbsp;</td><td _ngcontent-c7="">Stockes &amp; Induteries</td><td _ngcontent-c7="">Equity Indices</td><td _ngcontent-c7="">Fixed Income</td><td _ngcontent-c7="">Currencies</td><td _ngcontent-c7="">Comm.</td><td _ngcontent-c7="" class="tdBorderLeft">Total</td></tr></thead><tbody _ngcontent-c7=""><!--bindings={
+    "ng-reflect-ng-for-of": "[object Object],[object Object"
+  }--><tr _ngcontent-c7="" ng-reflect-ng-class=""><td _ngcontent-c7="">Value</td><td _ngcontent-c7="">-1.3%</td><td _ngcontent-c7="">-0.3%</td><td _ngcontent-c7="">2.7%</td><td _ngcontent-c7="">0.0%</td><td _ngcontent-c7="">1.6%</td><td _ngcontent-c7="" class="tdBorderLeft">2.6%</td></tr><tr _ngcontent-c7="" ng-reflect-ng-class=""><td _ngcontent-c7="">Momentum</td><td _ngcontent-c7="">-1.3%</td><td _ngcontent-c7="">-0.3%</td><td _ngcontent-c7="">2.7%</td><td _ngcontent-c7="">0.0%</td><td _ngcontent-c7="">1.6%</td><td _ngcontent-c7="" class="tdBorderLeft">2.6%</td></tr><tr _ngcontent-c7="" ng-reflect-ng-class=""><td _ngcontent-c7="">Carry</td><td _ngcontent-c7="">-1.3%</td><td _ngcontent-c7="">-0.3%</td><td _ngcontent-c7="">2.7%</td><td _ngcontent-c7="">0.0%</td><td _ngcontent-c7="">1.6%</td><td _ngcontent-c7="" class="tdBorderLeft">2.6%</td></tr><tr _ngcontent-c7="" ng-reflect-ng-class=""><td _ngcontent-c7="">Defensive</td><td _ngcontent-c7="">-1.3%</td><td _ngcontent-c7="">-0.3%</td><td _ngcontent-c7="">2.7%</td><td _ngcontent-c7="">0.0%</td><td _ngcontent-c7="">1.6%</td><td _ngcontent-c7="" class="tdBorderLeft">2.6%</td></tr><tr _ngcontent-c7="" class="trBorderTop" ng-reflect-ng-class="trBorderTop"><td _ngcontent-c7="">Total</td><td _ngcontent-c7="">-1.3%</td><td _ngcontent-c7="">-0.3%</td><td _ngcontent-c7="">2.7%</td><td _ngcontent-c7="">0.0%</td><td _ngcontent-c7="">1.6%</td><td _ngcontent-c7="" class="tdBorderLeft">2.6%</td></tr></tbody></table></app-risk-returns></dynamic-component><!--bindings={
+    "ng-reflect-ng-if": "true"
+  }--><div _ngcontent-c1="" class="toolbar" colspan="2"><div _ngcontent-c1="" class="toolbar-icon toolbar-delete"></div><br _ngcontent-c1=""><div _ngcontent-c1="" class="toolbar-icon toolbar-split"></div><div _ngcontent-c1="" class="clearBoth"></div></div></div><!--bindings={
+    "ng-reflect-ng-if": "0"
+  }--></td></tr></tbody></table></div><div _ngcontent-c1=""><!----><!--bindings={
+    "ng-reflect-ng-template-outlet-context": "[object Object]",
+    "ng-reflect-ng-template-outlet": "[object Object]"
+  }--><table _ngcontent-c1="" class="table table-bordered templateTable"><tbody _ngcontent-c1=""><tr _ngcontent-c1=""><!--bindings={
+    "ng-reflect-ng-for-of": "[object Object]"
+  }--><td _ngcontent-c1="" colspan="1" width="1700" height="75" class="" style="width: 1700px;"><div _ngcontent-c1="" mwldroppable="" ng-reflect-ng-style="[object Object]" height="75" class="" style="min-height: 0px; height: 0px; padding: 0px; background-color: rgb(247, 247, 247);"><dynamic-component _ngcontent-c1="" class="FloatLeft width98percent" ng-reflect-component-data="[object Object]"><div id="Component_0_51"></div><app-blank _nghost-c8=""><span _ngcontent-c8=""></span></app-blank></dynamic-component><!--bindings={
+    "ng-reflect-ng-if": "false"
+  }--></div><!--bindings={
+    "ng-reflect-ng-if": "1"
+  }--><div _ngcontent-c1=""><!--bindings={
+    "ng-reflect-ng-for-of": "[object Object]",
+    "ng-reflect-ng-for-template": "[object Object]"
+  }--><table _ngcontent-c1="" class="table table-bordered templateTable"><tbody _ngcontent-c1=""><tr _ngcontent-c1=""><!--bindings={
+    "ng-reflect-ng-for-of": "[object Object],[object Object"
+  }--><td _ngcontent-c1="" colspan="1" width="1700" height="75"><div _ngcontent-c1="" mwldroppable="" ng-reflect-ng-style="[object Object]" height="75" class="" style="min-height: 75px;"><dynamic-component _ngcontent-c1="" class="FloatLeft width98percent" ng-reflect-component-data="[object Object]"><div id="Component_0_51_11"><div style="position: relative;"><div dir="ltr" style="position: relative; width: 400px; height: 300px; margin: auto;"><div aria-label="A chart." style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;"><svg width="400" height="300" aria-label="A chart." style="overflow: hidden;"><defs id="_ABSTRACT_RENDERER_ID_2"><filter id="_ABSTRACT_RENDERER_ID_4"><feGaussianBlur in="SourceAlpha" stdDeviation="2"></feGaussianBlur><feOffset dx="1" dy="1"></feOffset><feComponentTransfer><feFuncA type="linear" slope="0.1"></feFuncA></feComponentTransfer><feMerge><feMergeNode></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge></filter></defs><rect x="0" y="0" width="400" height="300" stroke="none" stroke-width="0" fill="#ffffff"></rect><g><path d="M200,93.6L200,9A141,141,0,0,1,236.49348535945543,286.1955415067587L214.59739414378217,204.47821660270347A56.400000000000006,56.400000000000006,0,0,0,200,93.6" stroke="#ffffff" stroke-width="1" fill="#3366cc"></path><text text-anchor="start" x="297.3952896169922" y="138.98705315607057" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#ffffff">45.8%</text></g><g><path d="M145.52178339729653,164.5973941437822L63.804458493241384,186.49348535945546A141,141,0,0,1,200,9L200,93.6A56.400000000000006,56.400000000000006,0,0,0,145.52178339729653,164.5973941437822" stroke="#ffffff" stroke-width="1" fill="#990099"></path><text text-anchor="start" x="93.85474716454797" y="84.2954511671813" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#ffffff">29.2%</text></g><g><path d="M160.11917754107873,189.88082245892127L100.2979438526968,249.7020561473032A141,141,0,0,1,63.804458493241384,186.49348535945546L145.52178339729653,164.5973941437822A56.400000000000006,56.400000000000006,0,0,0,160.11917754107873,189.88082245892127" stroke="#ffffff" stroke-width="1" fill="#109618"></path><text text-anchor="start" x="86.68063133497172" y="212.05808963828227" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#ffffff">8.3%</text></g><g><path d="M185.40260585621783,204.47821660270347L163.50651464054457,286.1955415067587A141,141,0,0,1,100.2979438526968,249.7020561473032L160.11917754107873,189.88082245892127A56.400000000000006,56.400000000000006,0,0,0,185.40260585621783,204.47821660270347" stroke="#ffffff" stroke-width="1" fill="#ff9900"></path><text text-anchor="start" x="128.13209636252404" y="256.67822543896153" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#ffffff">8.3%</text></g><g><path d="M214.59739414378217,204.47821660270347L236.49348535945543,286.1955415067587A141,141,0,0,1,163.50651464054457,286.1955415067587L185.40260585621783,204.47821660270347A56.400000000000006,56.400000000000006,0,0,0,214.59739414378217,204.47821660270347" stroke="#ffffff" stroke-width="1" fill="#dc3912"></path><text text-anchor="start" x="187.50000000000003" y="277.74764294607536" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#ffffff">8.3%</text></g><g><g><g><text text-anchor="end" x="388" y="130.9507416563659" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#222222">Work</text></g><g><text text-anchor="end" x="388" y="148.74925834363412" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#9e9e9e">45.8%</text></g></g><g><path d="M305.5,136.5L352.5,136.5L352.5,136.5L388.5,136.5" stroke="#636363" stroke-width="1" stroke-opacity="0.7" fill-opacity="1" fill="none"></path><circle cx="305.5" cy="136.5" r="2" stroke="none" stroke-width="0" fill-opacity="0.7" fill="#636363"></circle></g><g><g><text text-anchor="start" x="12" y="263.9507416563659" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#222222">Eat</text></g><g><text text-anchor="start" x="12" y="281.74925834363415" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#9e9e9e">8.3%</text></g></g><g><path d="M200.5,256.5L48.5,256.5L48.5,269.5L12.5,269.5" stroke="#636363" stroke-width="1" stroke-opacity="0.7" fill-opacity="1" fill="none"></path><circle cx="200.5" cy="256.5" r="2" stroke="none" stroke-width="0" fill-opacity="0.7" fill="#636363"></circle></g><g><g><text text-anchor="start" x="12" y="227.95074165636586" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#222222">Com…</text><rect x="12" y="218.60074165636587" width="34" height="11" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect></g><g><text text-anchor="start" x="12" y="245.74925834363412" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#9e9e9e">8.3%</text></g></g><g><path d="M146.5,241.5L48.5,241.5L48.5,233.5L12.5,233.5" stroke="#636363" stroke-width="1" stroke-opacity="0.7" fill-opacity="1" fill="none"></path><circle cx="146.5" cy="241.5" r="2" stroke="none" stroke-width="0" fill-opacity="0.7" fill="#636363"></circle></g><g><g><text text-anchor="start" x="12" y="178.55148331273176" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#222222">Watch</text><text text-anchor="start" x="12" y="192.95074165636586" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#222222">TV</text></g><g><text text-anchor="start" x="12" y="210.74925834363412" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#9e9e9e">8.3%</text></g></g><g><path d="M108.5,202.5L48.5,202.5L48.5,198.5L12.5,198.5" stroke="#636363" stroke-width="1" stroke-opacity="0.7" fill-opacity="1" fill="none"></path><circle cx="108.5" cy="202.5" r="2" stroke="none" stroke-width="0" fill-opacity="0.7" fill="#636363"></circle></g><g><g><text text-anchor="start" x="12" y="80.95074165636588" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#222222">Sleep</text></g><g><text text-anchor="start" x="12" y="98.74925834363411" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#9e9e9e">29.2%</text></g></g><g><path d="M116.5,86.5L48.5,86.5L48.5,86.5L12.5,86.5" stroke="#636363" stroke-width="1" stroke-opacity="0.7" fill-opacity="1" fill="none"></path><circle cx="116.5" cy="86.5" r="2" stroke="none" stroke-width="0" fill-opacity="0.7" fill="#636363"></circle></g></g><g></g></svg><div aria-label="A tabular representation of the data in the chart." style="position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;"><table><thead><tr><th>Task</th><th>Hours per Day</th></tr></thead><tbody><tr><td>Work</td><td>11</td></tr><tr><td>Eat</td><td>2</td></tr><tr><td>Commute</td><td>2</td></tr><tr><td>Watch TV</td><td>2</td></tr><tr><td>Sleep</td><td>7</td></tr></tbody></table></div></div></div><div aria-hidden="true" style="display: none; position: absolute; top: 310px; left: 410px; white-space: nowrap; font-family: Arial; font-size: 11px; margin: auto; font-weight: bold;">11 (45.8%)</div><div style="margin: auto;"></div></div></div><app-employee _nghost-c9=""><div _ngcontent-c9="" class="divTableCell" id="Chartelement1"><pie-chart _ngcontent-c9="" _nghost-c6="" ng-reflect--chart-height="300" ng-reflect--chart-width="400" ng-reflect-data="Task,Hours per Day,Work,11,Eat" ng-reflect-config="[object Object]" ng-reflect-element-id="Component_0_51_11"><div _ngcontent-c6="" id="Component_0_51_11"></div></pie-chart></div></app-employee></dynamic-component><!--bindings={
+    "ng-reflect-ng-if": "true"
+  }--><div _ngcontent-c1="" class="toolbar" colspan="2"><div _ngcontent-c1="" class="toolbar-icon toolbar-delete"></div><br _ngcontent-c1=""><div _ngcontent-c1="" class="toolbar-icon toolbar-split"></div><div _ngcontent-c1="" class="clearBoth"></div></div></div><!--bindings={
+    "ng-reflect-ng-if": "0"
+  }--></td><td _ngcontent-c1="" colspan="1" width="1700" height="75"><div _ngcontent-c1="" mwldroppable="" ng-reflect-ng-style="[object Object]" height="75" class="" style="min-height: 75px;"><dynamic-component _ngcontent-c1="" class="FloatLeft width98percent" ng-reflect-component-data="[object Object]"><div id="Component_0_51_12"><div style="position: relative;"><div dir="ltr" style="position: relative; width: 400px; height: 300px; margin: auto;"><div aria-label="A chart." style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;"><svg width="400" height="300" aria-label="A chart." style="overflow: hidden;"><defs id="_ABSTRACT_RENDERER_ID_3"></defs><rect x="0" y="0" width="400" height="300" stroke="none" stroke-width="0" fill="#ffffff"></rect><g><path d="M200,93.6L200,9A141,141,0,0,1,299.7020561473032,50.297943852696804L239.88082245892127,110.11917754107873A56.400000000000006,56.400000000000006,0,0,0,200,93.6" stroke="#ffffff" stroke-width="1" fill="#3366cc"></path><text text-anchor="start" x="229.81426915717043" y="44.45167683173428" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#ffffff">12.5%</text></g><g><path d="M239.88082245892127,110.11917754107873L299.7020561473032,50.297943852696804A141,141,0,0,1,336.1955415067587,113.50651464054457L254.47821660270347,135.40260585621783A56.400000000000006,56.400000000000006,0,0,0,239.88082245892127,110.11917754107873" stroke="#ffffff" stroke-width="1" fill="#dc3912"></path><text text-anchor="start" x="288.3193686650283" y="95.64191036171778" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#ffffff">8.3%</text></g><g><path d="M254.47821660270347,135.40260585621783L336.1955415067587,113.50651464054457A141,141,0,0,1,270.5,272.10958193360585L228.20000000000002,198.84383277344233A56.400000000000006,56.400000000000006,0,0,0,254.47821660270347,135.40260585621783" stroke="#ffffff" stroke-width="1" fill="#ff9900"></path><text text-anchor="start" x="289.4271491321577" y="197.31224823168404" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#ffffff">20.8%</text></g><g><path d="M171.8,198.84383277344236L129.50000000000003,272.10958193360585A141,141,0,0,1,200,9L200,93.6A56.400000000000006,56.400000000000006,0,0,0,171.8,198.84383277344236" stroke="#ffffff" stroke-width="1" fill="#990099"></path><text text-anchor="start" x="74.77262680287629" y="124.44863896424235" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#ffffff">41.7%</text></g><g><path d="M228.20000000000002,198.84383277344233L270.5,272.10958193360585A141,141,0,0,1,129.50000000000003,272.10958193360585L171.8,198.84383277344236A56.400000000000006,56.400000000000006,0,0,0,228.20000000000002,198.84383277344233" stroke="#ffffff" stroke-width="1" fill="#109618"></path><text text-anchor="start" x="184.50000000000003" y="277.4226539589235" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#ffffff">16.7%</text></g><g><g><g><text text-anchor="end" x="388" y="46.950741656365885" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#222222">Eat</text></g><g><text text-anchor="end" x="388" y="64.74925834363411" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#9e9e9e">12.5%</text></g></g><g><path d="M240.5,52.5L352.5,52.5L352.5,52.5L388.5,52.5" stroke="#636363" stroke-width="1" stroke-opacity="0.7" fill-opacity="1" fill="none"></path><circle cx="240.5" cy="52.5" r="2" stroke="none" stroke-width="0" fill-opacity="0.7" fill="#636363"></circle></g><g><g><text text-anchor="end" x="388" y="91.95074165636588" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#222222">Com…</text><rect x="354" y="82.60074165636588" width="34" height="11" stroke="none" stroke-width="0" fill-opacity="0" fill="#ffffff"></rect></g><g><text text-anchor="end" x="388" y="109.74925834363411" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#9e9e9e">8.3%</text></g></g><g><path d="M292.5,97.5L352.5,97.5L352.5,97.5L388.5,97.5" stroke="#636363" stroke-width="1" stroke-opacity="0.7" fill-opacity="1" fill="none"></path><circle cx="292.5" cy="97.5" r="2" stroke="none" stroke-width="0" fill-opacity="0.7" fill="#636363"></circle></g><g><g><text text-anchor="end" x="388" y="170.55148331273176" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#222222">Watch</text><text text-anchor="end" x="388" y="184.95074165636586" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#222222">TV</text></g><g><text text-anchor="end" x="388" y="202.74925834363412" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#9e9e9e">20.8%</text></g></g><g><path d="M298.5,190.5L352.5,190.5L352.5,190.5L388.5,190.5" stroke="#636363" stroke-width="1" stroke-opacity="0.7" fill-opacity="1" fill="none"></path><circle cx="298.5" cy="190.5" r="2" stroke="none" stroke-width="0" fill-opacity="0.7" fill="#636363"></circle></g><g><g><text text-anchor="start" x="12" y="236.55148331273176" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#222222">Video</text><text text-anchor="start" x="12" y="250.95074165636586" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#222222">games</text></g><g><text text-anchor="start" x="12" y="268.74925834363415" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#9e9e9e">16.7%</text></g></g><g><path d="M200.5,256.5L48.5,256.5L48.5,256.5L12.5,256.5" stroke="#636363" stroke-width="1" stroke-opacity="0.7" fill-opacity="1" fill="none"></path><circle cx="200.5" cy="256.5" r="2" stroke="none" stroke-width="0" fill-opacity="0.7" fill="#636363"></circle></g><g><g><text text-anchor="start" x="12" y="117.95074165636588" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#222222">Sleep</text></g><g><text text-anchor="start" x="12" y="135.74925834363412" font-family="Arial" font-size="11" stroke="none" stroke-width="0" fill="#9e9e9e">41.7%</text></g></g><g><path d="M98.5,123.5L48.5,123.5L48.5,123.5L12.5,123.5" stroke="#636363" stroke-width="1" stroke-opacity="0.7" fill-opacity="1" fill="none"></path><circle cx="98.5" cy="123.5" r="2" stroke="none" stroke-width="0" fill-opacity="0.7" fill="#636363"></circle></g></g><g></g></svg><div aria-label="A tabular representation of the data in the chart." style="position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;"><table><thead><tr><th>Task</th><th>Hours per Day</th></tr></thead><tbody><tr><td>Eat</td><td>3</td></tr><tr><td>Commute</td><td>2</td></tr><tr><td>Watch TV</td><td>5</td></tr><tr><td>Video games</td><td>4</td></tr><tr><td>Sleep</td><td>10</td></tr></tbody></table></div></div></div><div aria-hidden="true" style="display: none; position: absolute; top: 310px; left: 410px; white-space: nowrap; font-family: Arial; font-size: 11px; font-weight: bold; margin: auto;">My Daily Activities at 20 years old</div><div style="margin: auto;"></div></div></div><app-sample1 _nghost-c10=""><div _ngcontent-c10="" class="divTableCell" id="Chartelement1"><pie-chart _ngcontent-c10="" _nghost-c6="" ng-reflect--chart-height="300" ng-reflect--chart-width="400" ng-reflect-data="Task,Hours per Day,Eat,3,Commu" ng-reflect-config="[object Object]" ng-reflect-element-id="Component_0_51_12"><div _ngcontent-c6="" id="Component_0_51_12"></div></pie-chart></div></app-sample1></dynamic-component><!--bindings={
+    "ng-reflect-ng-if": "true"
+  }--><div _ngcontent-c1="" class="toolbar" colspan="2"><div _ngcontent-c1="" class="toolbar-icon toolbar-delete"></div><br _ngcontent-c1=""><div _ngcontent-c1="" class="toolbar-icon toolbar-split"></div><div _ngcontent-c1="" class="clearBoth"></div></div></div><!--bindings={
+    "ng-reflect-ng-if": "0"
+  }--></td></tr></tbody></table></div></td></tr></tbody></table></div><div _ngcontent-c1=""><!----><!--bindings={
+    "ng-reflect-ng-template-outlet-context": "[object Object]",
+    "ng-reflect-ng-template-outlet": "[object Object]"
+  }--><table _ngcontent-c1="" class="table table-bordered templateTable"><tbody _ngcontent-c1=""><tr _ngcontent-c1=""><!--bindings={
+    "ng-reflect-ng-for-of": "[object Object]"
+  }--><td _ngcontent-c1="" colspan="1" width="1700" height="75"><div _ngcontent-c1="" mwldroppable="" ng-reflect-ng-style="[object Object]" height="75" class="" style="min-height: 75px;"><dynamic-component _ngcontent-c1="" class="FloatLeft width98percent" ng-reflect-component-data="[object Object]"><div id="Component_0_61"></div><app-disclaimer _nghost-c11=""><div _ngcontent-c11="" class="conten-header"> Disclaimer
+  </div><div _ngcontent-c11="" class="content"><p _ngcontent-c11=""> All investments, including real estate, is speculative in nature and involves substantial risk of loss. We encourage our investors to invest carefully. We also encourage investors to get personal advice from your professional investment advisor and to make independent investigations before acting on information that we publish. Much of our information is derived directly from information published by companies or submitted to governmental agencies on which we believe are reliable, but are without our independent verification. Therefore, we cannot assure you that the information is accurate or complete. We do not in any way warrant or guarantee the success of any action you take in reliance on our statements or recommendations. </p><p _ngcontent-c11=""> Past performance is not necessarily indicative of future results. All investments carry risk and all investment decisions of an individual remain the responsibility of that individual. There is no guarantee that systems, indicators, or signals will result in profits or that they will not result in losses. All investors are advised to fully understand all risks associated with any kind of investing they choose to do. Hypothetical or simulated performance is not indicative of future results. Unless specifically noted otherwise, all return examples provided in our websites and publications are based on hypothetical or simulated investing. We make no representations or warranties that any investor will, or is likely to, achieve profits similar to those shown, because hypothetical or simulated performance is not necessarily indicative of future results. Don’t enter any investment without fully understanding the worst-case scenarios of that investment. </p></div></app-disclaimer></dynamic-component><!--bindings={
+    "ng-reflect-ng-if": "true"
+  }--><div _ngcontent-c1="" class="toolbar" colspan="1"><div _ngcontent-c1="" class="toolbar-icon toolbar-delete"></div><br _ngcontent-c1=""><div _ngcontent-c1="" class="toolbar-icon toolbar-split"></div><div _ngcontent-c1="" class="clearBoth"></div></div></div><!--bindings={
+    "ng-reflect-ng-if": "0"
+  }--></td></tr></tbody></table></div></div>

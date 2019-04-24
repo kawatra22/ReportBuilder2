@@ -1,0 +1,83 @@
+<div class="conten-header">
+   Realized Style Contributions to Returns
+  </div>
+<div class="table-heading">December Estimate</div>
+<table class="table riskTable">
+  <thead>
+    <tr>
+        <td>&nbsp;</td>
+    <td>Stockes & Induteries</td>
+    <td>Equity Indices</td>
+    <td>Fixed Income</td>
+    <td>Currencies</td>
+    <td>Comm.</td>
+    <td class="tdBorderLeft">Total</td>
+  </tr>
+</thead>
+  <tbody>
+    <tr *ngFor="let item of decemberData" [ngClass] = "GetClassName(item.Lable)">
+      <td>{{item.Lable}}</td>
+      <td>{{item.Stocks}}</td>
+      <td>{{item.Equaity}}</td>
+      <td>{{item.Fixed}}</td>
+      <td>{{item.Currencies}}</td>
+      <td>{{item.Comm}}</td>
+      <td class="tdBorderLeft">{{item.Total}}</td>
+    </tr>
+  </tbody>
+
+</table>
+
+<div class="table-heading">4Q18 Qtr-to-Date</div>
+<table class="table riskTable">
+    <thead>
+      <tr>
+        <td>&nbsp;</td>
+      <td>Stockes & Induteries</td>
+      <td>Equity Indices</td>
+      <td>Fixed Income</td>
+      <td>Currencies</td>
+      <td>Comm.</td>
+      <td class="tdBorderLeft">Total</td>
+    </tr>
+  </thead>
+    <tbody>
+      <tr *ngFor="let item of QtrData" [ngClass] = "GetClassName(item.Lable)">
+        <td>{{item.Lable}}</td>
+        <td>{{item.Stocks}}</td>
+        <td>{{item.Equaity}}</td>
+        <td>{{item.Fixed}}</td>
+        <td>{{item.Currencies}}</td>
+        <td>{{item.Comm}}</td>
+        <td class="tdBorderLeft">{{item.Total}}</td>
+      </tr>
+    </tbody>
+
+  </table>
+
+  <div class="table-heading">2018 Year-to-Date</div>
+<table class="table riskTable">
+    <thead>
+      <tr>
+          <td>&nbsp;</td>
+      <td>Stockes & Induteries</td>
+      <td>Equity Indices</td>
+      <td>Fixed Income</td>
+      <td>Currencies</td>
+      <td>Comm.</td>
+      <td class="tdBorderLeft">Total</td>
+    </tr>
+  </thead>
+    <tbody>
+      <tr *ngFor="let item of YearData" [ngClass] = "GetClassName(item.Lable)">
+        <td>{{item.Lable}}</td>
+        <td>{{item.Stocks}}</td>
+        <td>{{item.Equaity}}</td>
+        <td>{{item.Fixed}}</td>
+        <td>{{item.Currencies}}</td>
+        <td>{{item.Comm}}</td>
+        <td class="tdBorderLeft">{{item.Total}}</td>
+      </tr>
+    </tbody>
+
+  </table>

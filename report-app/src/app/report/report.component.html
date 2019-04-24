@@ -1,0 +1,125 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+  <a class="navbar-brand mr-1" href="index.html">Report Builder</a>
+  <!-- <button type="button" value="Add Row" (click)="AddRow(1)">Row 1x1</button>
+  <button type="button" value="Add Row" (click)="AddRow(2)">Row 1x2</button>
+  <button type="button" value="Add Row" (click)="AddRow(3)">Row 1x3</button>
+  <button type="button" value="Add Row" (click)="AddRow(4)">Row 1x4</button> -->
+
+  <div class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+    <div class="input-group">
+      <select (change)="templateChange($event.target.value)" class="form-control">
+        <option value="default">Select Option</option>
+        <option *ngFor="let template of templates" value={{template.value}}>
+          {{template.text}}
+        </option>
+      </select>
+      <button type="button" value="Add Row" (click)="AddTemplate(row,column)">Add Template</button>
+      &nbsp;&nbsp;
+      <button type="button" value="Add Row" (click)="PrintPDF()">&nbsp;&nbsp;Print&nbsp;&nbsp;</button>
+
+    </div>
+  </div>
+</nav>
+<div id="wrapper">
+  <!-- Sidebar -->
+  <ul class="sidebar navbar-nav">
+    <li class="btn btn-primary margin-top-2 textAlignLeft" dropData="LogoComponent" mwlDraggable (dragEnd)="dragEnd($event)">
+      Logo
+    </li>
+    <li class="btn btn-primary margin-top-2 textAlignLeft" dropData="HeaderComponent" mwlDraggable (dragEnd)="dragEnd($event)">
+      Header
+    </li>
+    <li class="btn btn-primary margin-top-2 textAlignLeft" dropData="ObjectiveComponent" mwlDraggable (dragEnd)="dragEnd($event)">
+      Fund Objective
+    </li>
+    <li class="btn btn-primary margin-top-2 textAlignLeft" dropData="RiskReturnsComponent" mwlDraggable (dragEnd)="dragEnd($event)">
+      Returns
+    </li>
+    <li class="btn btn-primary margin-top-2 textAlignLeft" dropData="RiskAllocationComponent" mwlDraggable (dragEnd)="dragEnd($event)">
+      Risk Allocation
+    </li>
+    <li class="btn btn-primary margin-top-2 textAlignLeft" dropData="DisclaimerComponent" mwlDraggable (dragEnd)="dragEnd($event)">
+      Disclaimer
+    </li>
+    <li class="btn btn-primary margin-top-2 textAlignLeft" dropData="Component1" mwlDraggable (dragEnd)="dragEnd($event)">
+      Sample 0
+    </li>
+    <li class="btn btn-primary margin-top-2 textAlignLeft" dropData="Component2" mwlDraggable (dragEnd)="dragEnd($event)">
+      Sample 1
+    </li>
+    <li class="btn btn-primary margin-top-2 textAlignLeft" dropData="TextEditorComponent" mwlDraggable (dragEnd)="dragEnd($event)">
+      Input Editor
+    </li>
+  </ul>
+
+  <div id="content-wrapper" [ngStyle]="contentStyle">
+    <div *ngFor="let r of reportTemplate">
+      <ng-template #nodeTemplateRef let-node>
+        <table class='table table-bordered templateTable' [ngClass] ="r.rowStyle" [attr.child] = "r.IsChild">
+          <tr>
+            <td *ngFor="let c of node.cols" [attr.colspan]="c.colSpan" [attr.width]="c.width" [attr.height]="c.height">
+              <div mwlDroppable (drop)='onDrop($event, node , c)' [ngStyle]="GetStyle(r,c)"
+                [attr.height]="c.height">
+                <dynamic-component [componentData]="GetComponent(r , c)" class="FloatLeft width98percent"></dynamic-component>
+                <!-- {{c.id}} -->
+                <div [attr.colspan]="node.cols.length" class="toolbar"  *ngIf="c.rows.length == 0">
+                  <div class="toolbar-icon toolbar-delete" (click)="DeleteTemplate(node , c)"></div><br />
+                  <div class="toolbar-icon toolbar-split" (click)="SplitOperation(node , c)"></div><br />
+                  <div class="toolbar-icon toolbar-page-break" (click)="PageBreakStyle(node , c)"></div><br/>
+                  <div class="toolbar-icon toolbar-header" (click) = "HeaderStyle(r , c)"></div><br/>
+                  <div class="toolbar-icon toolbar-footer" (click) = "FooterStyle(r , c)"></div>
+                  <div class="clearBoth"></div>
+                </div>
+              </div>
+              <div *ngIf="c.rows.length">
+                <ng-template ngFor [ngForOf]="c.rows" [ngForTemplate]="nodeTemplateRef">
+
+                  <ng-template [ngTemplateOutlet]="nodeTemplateRef" [ngTemplateOutletContext]="{node: child}"></ng-template>
+
+                </ng-template>
+              </div>
+            </td>
+          </tr>
+        </table>
+     
+      </ng-template>
+      <ng-template [ngTemplateOutlet]="nodeTemplateRef" [ngTemplateOutletContext]="{$implicit: r}"></ng-template>
+    </div>
+  </div>
+  <div style="clear:both"></div>
+  <!-- /.container-fluid -->
+
+  <!-- Sticky Footer -->
+  <!-- <footer class="sticky-footer" mwlDroppable (drop)="onDrop($event)">
+      <span>Testing</span>
+    </footer> -->
+</div>
+<!-- /.content-wrapper -->
+
+<!-- /#wrapper -->
+
+<div id="splitDialog" class="hide" title="Split Formation">
+  <div class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+    <div class="input-group">
+      <table>
+        <tr>
+          <td>
+            <select (change)="SplitSelect($event.target.value)" class="form-control width100percent">
+              <option *ngFor="let template of templates" value={{template.value}}>
+                {{template.text}}
+              </option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="dialog-button">
+              <button type="button" class="button" value="Add" (click)="AddSplit(splitRow,splitColumn)">Add</button>
+              <button type="button" class="button" value="Cancel" (click)="CloseSplitDialog()">Cancel</button>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
